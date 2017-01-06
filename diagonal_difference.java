@@ -1,4 +1,4 @@
-https://www.hackerrank.com/challenges/diagonal-difference/submissions/code/34972841
+https://www.hackerrank.com/challenges/diagonal-difference
 
 import java.io.*;
 import java.util.*;
