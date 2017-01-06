@@ -1,4 +1,4 @@
-https://www.hackerrank.com/challenges/a-very-big-sum/submissions/code/34972531
+https://www.hackerrank.com/challenges/a-very-big-sum
 
 import java.io.*;
 import java.util.*;
