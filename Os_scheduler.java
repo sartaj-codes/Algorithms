@@ -1,4 +1,4 @@
-package p;
+// Assumption,  CPU should not be ideal 
 
 import java.util.*;
 
