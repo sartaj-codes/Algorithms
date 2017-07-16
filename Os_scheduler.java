@@ -5,7 +5,8 @@ import java.util.*;
 public class Os_scheduler {
 
   /* Class requred for Process detail like as PCB */
-	class Process{
+	class Process
+	{
 		int arriv = 0;
 		int burst = 0;
 		int tburst = 0;
