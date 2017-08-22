@@ -1,0 +1,59 @@
+
+
+For Enabling Analytics API's ...
+https://console.developers.google.com/apis/api/analytics.googleapis.com/overview?project=gatesting-177516
+
+STEPS TO GET ACCESS TOKEN :- 
+
+Step 1 :- Since I'd setup it on localhost, add an tracking code on CLIENTSIDE and create evnts and all setup GA completly.
+Step 2 :- Open an Google Console API(you must be logined with ur google account), create an new project according to requirement (mine in web application)
+          under steps:- 
+          a) create credentials... create Oauth with (client_id, client_secret)  and set :- Authorized JavaScript origins = http://localhost:3000 (redirect_uri)
+                                                                                            Authorized redirect URIs      = http://localhost:3000 ( ""         )
+      
+           save the client_id and client_secret and remember URI link...
+
+          b) open new tab and put this link :- 
+          https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/analytics&redirect_uri=YOUR_REDIRECT_URI_HERE&response_type=code&client_id=YOUR_CLIENT_ID_HERE     (redirect link :- where app is running eg:- http://localhost:3000)
+ 
+           This is used by me ....
+
+          { https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/analytics&redirect_uri=http://localhost:3000&response_type=code&client_id=29392866847-s4seqjv1nd9585tjpoi1oc4p0mh95lhe.apps.googleusercontent.com     }
+
+
+         c) This will redirect you on redirect link and it will want to allow google permissions click on google account.
+             after this you will see a code on url eg :- 4/1_hs3TN1AuNShm_gyoe9IqQi6MQqVQVWwESSkzifGDY     copy this .. 
+
+         d) send an post request on   :-  https://accounts.google.com/o/oauth2/token 
+                    HeaderContentType :-  x-www-form-urlencoded
+                    body              :-   KEY                                  VALUE
+                                       grant_type                       authorization_code
+                                       code                             4/1_hs3TN1AuNShm_gyoe9IqQi6MQqVQVWwESSkzifGDY
+                                       client_id                        given on console
+                                       client_secret                    given on console
+                                       redirect_uri                     http://localhost:3000
+
+                  This will give u an access_token
+
+
+STEPS TO FETCH DATA FROM GA :- 
+   Step 1 :- https://www.googleapis.com/analytics/v3/data/ga?ids=ga:158198640&start-date=7daysAgo&end-date=yesterday&metrics=ga:users,ga:pageViews&dimensions=ga:week&access_token=given_token
+
+  This is used by me with the help of filters :- 
+  {
+      https://www.googleapis.com/analytics/v3/data/ga?ids=ga:158198640&start-date=7daysAgo&end-date=yesterday&metrics=ga:totalEvents&dimensions=ga:eventCategory&filters=ga:eventCategory%3D%3DTestEvent&access_token=ya29.GluvBPFB8w7H73h7CnrQtuepwf-WMftxMhwjZumT7JqMc2pNyVYT3_tcI61fKdHY1fQeX_jkmYqWhuUcQpGjUdTYZXVfPsFbb4o5b6b3gFcEJACDAGLbwJOEC1BL
+
+  }
+  
+
+
+
+
+
+   This will provide you json of data.
+
+
+  Resources :-  http://thisistony.com/blog/googleanalytics/google-analytics-api-oauth-ever-wondered-how-to-get-the-access_token/
+
+
+
