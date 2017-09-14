@@ -1,7 +1,6 @@
 // Assumption,  CPU should not be ideal 
 
 import java.util.*;
-
 public class Os_scheduler {
 
   /* Class requred for Process detail like as PCB */
